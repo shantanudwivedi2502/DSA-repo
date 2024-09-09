@@ -578,6 +578,93 @@ int main ()
    int tempSol=binarySearch(n);
    cout<<"answer is "<<exact(n,3,tempSol);
 }*/
+//book allocation problem 
+/*#include<iostream> 
+using namespace std;
+bool isPossible(int arr[],int n ,int m,int mid)
+{
+    int studentCount=1;
+    int pageSum=0;
+    for(int i=0;i<n;i++)
+    {
+        if(pageSum+arr[i]<=mid)
+        {
+            pageSum+=arr[i];
+        }
+        else{
+            studentCount++;
+            if(studentCount>m||arr[i]>mid)
+            {
+                return false;
+            }
+            pageSum=arr[i];
+        }
+
+    }
+    return true;
+}
 
 
+int allocateBooks(int arr[],int n, int m)
+{
+    int s=0;
+    int sum =0;
+    for(int i=0;i<n;i++)
+    {
+        sum+=arr[i];
+    }
+    int e=sum;
+    int ans =-1;
+    int mid=(s+e)/2;
+    while(s<=e)
+    {
+        if(isPossible(arr,n,m,mid))//agr possible solution mil jata hai iska mtlab hai usse chote wale possible solution ho skte hain islye mid peeche yani left wale part mie leke jayenge 
+        {
+            ans=mid;
+            e =mid-1;
+             
+        }
+        else{
+            s=mid+1;//nahi possible solution milta hai toh mid iska mtlab hai usse choti values bhi possible solution nahi hongi isliye hum right wale part jayenge 
+        }
+        mid=(e+s)/2;
+    }
+    return ans;
+}
+int main ()
+{
+    int arr[10]={10,20,30,40};
+    int m=2;
+    int n=4;
+    cout<<"the ans is"<<allocateBooks(arr,n,m);
+}*/
+#include<iostream>
+using namespace std;
+int sort(int arr[],int n )
+{
+    for(int i=0;i<n-1;i++)
+    {
+        int minIndex=i;
+        for(int j=j+1;j<n;j++)
+        {
+            if(arr[j]<arr[minIndex])
+            {
+               minIndex=j;
+            }
+        }
+     swap(arr[i],arr[minIndex]);
+    }
 
+}
+
+
+int main()
+{
+    int arr[5]={64,25,12,22,11};
+    int n =5;
+    sort(arr,n);
+    for(int i=0;i<n;i++)
+    {
+        cout<<" "<<arr[i];
+    }
+}
